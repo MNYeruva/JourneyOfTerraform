@@ -16,3 +16,8 @@ resource "aws_route53_record" "www" {
   ttl     = 1
   records = [aws_eip.lb.public_ip]
 }
+
+resource "aws_key_pair" "deployer" {
+  key_name   = "devops-pub"
+  public_key = file("${path.module}/devops.pub")
+}
