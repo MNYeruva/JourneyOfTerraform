@@ -11,3 +11,7 @@ variable "INSTANCE_NAMES" {
 variable "ZONE_ID" {
     default = "Z00388491P1FW72F82KF"
 }
+
+variable "domain" {
+    default = "mnyeruva.online"
+}

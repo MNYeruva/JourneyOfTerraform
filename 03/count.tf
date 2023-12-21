@@ -11,10 +11,10 @@ resource "aws_instance" "conditions" {
 resource "aws_route53_record" "www" {
   count = 10  
   zone_id = var.ZONE_ID
-  name    = var.INSTANCE_NAMES[count.index].mnyeruva.online
+  name    = "${var.INSTANCE_NAMES[count.index]}.${domain}"
   type    = "A"
   ttl     = 1
-  records = [aws_eip.lb.public_ip]
+  records = [aws_instance.conditions[count.index].private_ip]
 }
 
 resource "aws_key_pair" "deployer" {
