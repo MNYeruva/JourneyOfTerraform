@@ -5,9 +5,15 @@ resource "aws_security_group" "allow_all" {
 
   ingress {
     description      = "allowing all inbound traffic"
-    from_port        = 443
-    to_port          = 443
+    from_port        = 0
+    to_port          = 0
     protocol         = "tcp"
-    cidr_blocks      = [aws_vpc.main.cidr_block]
-    ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
+    cidr_blocks      = var.CIDR_SG
+  }
+
+    egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1" # all protocols
+    cidr_blocks      = var.CIDR_SG
   }

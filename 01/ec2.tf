@@ -6,4 +6,13 @@
  resource "aws_instance" "terraform" {
     ami = "var.AMI_ID"
     instance_type = "var.INSTANCE_TYPE"
+    security_groups = [aws.security_group.allow_all.name]
+
+#    tags = {
+#        Name = "MongoDB"
+#        Environment = "DEV"
+#        Terraform = "true"
+#        Project = "Roboshop"
+#        Component = "MongoDB"
+#    }
 }
